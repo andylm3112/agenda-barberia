@@ -1,8 +1,9 @@
 export const NOMBRE_NEGOCIO = 'Barbería Demo'
-export const SLOGAN = 'Reserva tu cita en 30 segundos'
-export const COLOR_PRIMARIO = '#000000'
-export const COLOR_SECUNDARIO = '#D4AF37'
-export const COLOR_FONDO = '#0a0a0a'
+export const SLOGAN = 'Agenda tu corte en 30 segundos.'
+export const COLOR_PRIMARIO = '#13224A' // azul marino (poste, textos)
+export const COLOR_SECUNDARIO = '#D62839' // rojo del poste (acciones)
+export const COLOR_AZUL = '#2E6BD8' // azul del poste
+export const COLOR_FONDO = '#F3F5FA' // papel
 export const WHATSAPP = '526620000000' // código de país + número, sin + ni espacios
 
 // Horario general (0 = domingo ... 6 = sábado)

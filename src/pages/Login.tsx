@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+import { NOMBRE_NEGOCIO } from '../config'
 
 export default function Login() {
   const nav = useNavigate()
@@ -23,27 +24,41 @@ export default function Login() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4">
-      <form onSubmit={entrar} className="w-full max-w-sm rounded-2xl border border-secondary/40 bg-white/5 p-6">
-        <h1 className="mb-4 text-center text-2xl uppercase tracking-widest text-secondary">Acceso</h1>
-        {error && <div className="mb-3 rounded-xl border border-red-500 bg-red-500/10 p-3 text-red-300">{error}</div>}
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Correo"
-          className="mb-2 w-full rounded-xl border border-secondary/40 bg-transparent px-4 py-3 outline-none"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Contraseña"
-          className="mb-4 w-full rounded-xl border border-secondary/40 bg-transparent px-4 py-3 outline-none"
-        />
-        <button disabled={loading} className="w-full rounded-xl bg-secondary py-3 font-medium text-primary disabled:opacity-40">
-          {loading ? 'Entrando…' : 'Entrar'}
-        </button>
+    <div className="flex min-h-screen items-center justify-center bg-primary p-4">
+      <form onSubmit={entrar} className="w-full max-w-sm overflow-hidden rounded-3xl bg-white shadow-2xl">
+        <div className="franja" />
+        <div className="p-6">
+          <h1 className="display text-2xl">Panel de {NOMBRE_NEGOCIO}</h1>
+          <p className="mb-5 mt-1 text-primary/70">Entra para ver tus citas.</p>
+          {error && (
+            <div role="alert" className="mb-3 rounded-xl border border-secondary bg-secondary/10 p-3 font-medium text-secondary">
+              {error}
+            </div>
+          )}
+          <label className="block">
+            <span className="mb-1 block text-sm text-primary/70">Correo</span>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+              className="w-full rounded-xl border-2 border-primary/15 px-4 py-3 text-base outline-none focus:border-secondary"
+            />
+          </label>
+          <label className="mt-3 block">
+            <span className="mb-1 block text-sm text-primary/70">Contraseña</span>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+              className="w-full rounded-xl border-2 border-primary/15 px-4 py-3 text-base outline-none focus:border-secondary"
+            />
+          </label>
+          <button disabled={loading} className="mt-5 w-full rounded-full bg-secondary py-3.5 font-semibold text-white disabled:opacity-50">
+            {loading ? 'Entrando…' : 'Entrar'}
+          </button>
+        </div>
       </form>
     </div>
   )
